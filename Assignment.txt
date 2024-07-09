@@ -71,5 +71,5 @@ Answere--->
 	docker volume create mydata
 	docker run -d --name containername -v mydata:/path/in/container nginx
 
-
+http://10.10.16.125:8929/b108user15/devops-assignment/-/blob/433dff5bd3485ef4010d528f056734be5c387717/Assignment.txt
 munipravy045@gmail.com
