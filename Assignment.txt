@@ -1,0 +1,75 @@
+1.Create Nginx dockerfile
+	1.Set the base image to Ubuntu  
+	2.Install Nginx
+	3.Install necessary tools: vim wget curl net-tools
+	4.Remove the default Nginx configuration file
+	5.Copy a configuration file from the current directory
+	6.Expose ports (80)
+	7.Set the default command to execute when creating a new container
+
+
+Answere----->
+	FROM ubuntu:latest
+	RUN apt-get update && apt-get install -y \nginx \vim \wget \curl\net-tools
+	RUN rm -v /nginx/nginx.conf
+	COPY nginx.conf /nginx/nginx.conf
+	EXPOSE 80
+	CMD ["nginx","-g","daemon off;"]
+
+
+
+2.Build the docker image and push it to dockerhub.
+Answere--->
+  	docker build -t docker build -t username/dockerimage
+	docker push username/dockerimage	
+
+
+
+
+3.What is the difference between 'RUN', 'CMD', & 'ENTRYPOINT' in dockerfile?
+Answere---->
+      Run is used during the build phase to execute commands to modify the image and create a new layer.
+      CMD is used to specify the default command to be executed when a container is started.	
+      ENTRYPOINT specifies the executable to run and can also be overridden with arguments provided at runtime. It is often used when defining the container as an executable.
+
+
+
+
+4.How to remove container automatically after it exits?
+Answere---->
+	docker run --rm image
+
+
+
+5.How to check which containers are connected to a network?
+Answere---->
+          docker network ls
+
+
+
+6.How to check container ip address?
+Answere---->
+	docker inspect containername
+
+
+7.How to create custom bridge network?
+Answere---->
+	docker network create network_name
+	
+
+
+
+8.How to associate a container with a network?
+Answere---->
+	docker run -d --name containername --network network_name
+
+
+
+
+9.How to get persistent storage?
+Answere--->
+	docker volume create mydata
+	docker run -d --name containername -v mydata:/path/in/container nginx
+
+
+munipravy045@gmail.com
